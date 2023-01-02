@@ -1,0 +1,265 @@
+@media all {
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #regress
+    {
+      top: 230px;
+      left: 30px;
+      font-size: 12px;
+      color: #997300;
+      position: absolute;
+    }
+    /*-----------------------------*/
+    #timer
+    {
+      top: 250px;
+      left: 30px;
+      font-size: 22px;
+      color: #997300;
+      position: absolute;
+    }
+    /*-----------------------------*/
+    #nivel
+    {
+      top: 15px;
+      left: 240px;
+      width: 35px;
+      font-size: 12px;
+      color: #997300;
+      background-color: #f1f1f1;
+      position: absolute;
+    }
+    /*------------------------*/
+    .timbre
+    {
+      top: 15px;
+      left: 380px;
+      font-size: 12px;
+      color: #997300;
+      position: absolute;
+    }
+    /*------------------------*/
+    #pagIn
+    {
+      top: 80px;
+      left: 30px;
+      font-size: 20px;
+      color: #997300;
+      position: absolute;
+    }
+    /*------------------------*/
+    #autor
+    {
+      top: 3px;
+      left: 565px;
+      font-size: 9px;
+      color: #997300;
+      position: absolute;
+    }
+    /*----------------------- */
+    #interrog
+    {
+      top: 90px;
+      left: 90px;
+      font-size: 22px;
+      color: green;
+      position: absolute;
+    }
+    /*----------------------- */
+    #contaQ
+    {
+      top: -10px;
+      left: 30px;
+      font-size: 20px;
+      color: #997300;
+      position: absolute;
+    }
+    /* -------------------------- */
+    #tocar
+    {
+      top: 60px;
+      left: 618px;
+      width: 80px;
+      position: absolute;
+    }
+    #salvar
+    {
+      top: 90px;
+      left: 618px;
+      width: 80px;
+      position: absolute;
+    }
+    #audio
+    {
+      top: 150px;
+      left: 618px;
+      width: 80px;
+      position: absolute;
+    }
+    #iniciar
+    {
+      top: 30px;
+      left: 618px;
+      width: 80px;
+      position: absolute;
+    }
+    #proximo
+    {
+      top: 318px;
+      left: 618px;
+      width: 80px;
+      font-size: 11px;
+      position: absolute;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.55em;
+      letter-spacing: 1px;
+      transition: all 0.2s linear;
+      cursor: pointer;
+      background: #e6e600;
+    }
+    #resposta
+    {
+      top: 248px;
+      left: 618px;
+      width: 80px;
+      font-size: 11px;
+      position: absolute;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.55em;
+      letter-spacing: 1px;
+      transition: all 0.2s linear;
+      cursor: pointer;
+      background: #e6e600;
+    }
+
+    /* -------------------------- */
+
+    #paralelo1
+    {
+      top: 240px;
+      left: 100px;
+    }
+    #direto1
+    {
+      top: 265px;
+      left: 100px;
+    }
+    #obliquo1
+    {
+      top: 290px;
+      left: 100px;
+    }
+    #contrario1
+    {
+      top: 315px;
+      left: 100px;
+    }
+    #paralelo2
+    {
+      top: 240px;
+      left: 190px;
+    }
+    #direto2
+    {
+      top: 265px;
+      left: 190px;
+    }
+    #obliquo2
+    {
+      top: 290px;
+      left: 190px;
+    }
+    #contrario2
+    {
+      top: 315px;
+      left: 190px;
+    }
+    #paralelo3
+    {
+      top: 240px;
+      left: 280px;
+    }
+    #direto3
+    {
+      top: 265px;
+      left: 280px;
+    }
+    #obliquo3
+    {
+      top: 290px;
+      left: 280px;
+    }
+    #contrario3
+    {
+      top: 315px;
+      left: 280px;
+    }
+    #paralelo4
+    {
+      top: 240px;
+      left: 370px;
+    }
+    #direto4
+    {
+      top: 265px;
+      left: 370px;
+    }
+    #obliquo4
+    {
+      top: 290px;
+      left: 370px;
+    }
+    #contrario4
+    {
+      top: 315px;
+      left: 370px;
+    }
+    #paralelo5
+    {
+      top: 240px;
+      left: 460px;
+    }
+    #direto5
+    {
+      top: 265px;
+      left: 460px;
+    }
+    #obliquo5
+    {
+      top: 290px;
+      left: 460px;
+    }
+    #contrario5
+    {
+      top: 315px;
+      left: 460px;
+    }
+    .botaoResposta {
+      border-radius: 0.55em;
+      background: #E4E4E4;
+      width: 70px;
+      font-size: 11px;
+      position: absolute;
+    }
+}
+
+@media screen and (orientation: portrait) {
+  #aviso {
+    display: block;
+    color: blue;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  #aviso {
+    color: red;
+    display: none;
+  }
+}
