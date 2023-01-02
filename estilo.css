@@ -1,4 +1,4 @@
-@media all {
+
     html, body {
       width: 100vw;
       height: 100vh;
@@ -248,18 +248,3 @@
       font-size: 11px;
       position: absolute;
     }
-}
-
-@media screen and (orientation: portrait) {
-  #aviso {
-    display: block;
-    color: blue;
-  }
-}
-
-@media screen and (orientation: landscape) {
-  #aviso {
-    color: red;
-    display: none;
-  }
-}
