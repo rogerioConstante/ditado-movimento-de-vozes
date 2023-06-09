@@ -75,7 +75,7 @@
 
  // ------------------------------- cria contexto de imagem e som -------------------------------------------
 
-		var canvas = document.getElementById("myCanvas");
+    var canvas = document.getElementById("myCanvas");
     var renderer = new Renderer(canvas, Renderer.Backends.CANVAS);
     var ctx = renderer.getContext();
 
@@ -159,175 +159,183 @@
 
     getIp(function (ip) { ipe = ip; console.log(ipe); });
 
-    d = new Date(); //console.log(d);
-    var dt = d.toString(); //console.log(dt);
-    dt = dt.substr(0, dt.length-41); //console.log(dt);
+    resetaVariaveis();
 
-
-
+     document.addEventListener("keydown", function(event) {
+      // Verificar se a tecla pressionada é a tecla de atalho desejada (por exemplo, a tecla Enter)
+      if (event.key === "r" || event.key === "R") {
+        // Executar a ação desejada quando a tecla de atalho for pressionada
+        document.getElementById("resposta").click(); } else
+        if (event.key === "p" || event.key === "P") {
+        // Executar a ação desejada quando a tecla de atalho for pressionada
+        document.getElementById("proximo").click(); } else
+        if (event.key === "t" || event.key === "T") {
+        // Executar a ação desejada quando a tecla de atalho for pressionada
+        document.getElementById("tocar").click(); };
+    });
 
 // ----------------------- funções auxiliares -------------------------------
-		function testaIntConso(a, b) {
-			if (((a == 7 || a == 0 || a == -7) && (b == 4 || b == 11 || b == -3 || b == -10)) ||
-			    ((b == 7 || b == 0 || b == -7) && (a == 4 || a == 11 || a == -3 || a == -10))) { return false; };
-		  if (a > b) { var int = a - b;	} else { var int = b - a; };
-			if (int == 2 || int == 4 || int == 5 || int == 7 || int == 9) { return true; } else { return false; };
-		};
+function testaIntConso(a, b) {
+    if (((a == 7 || a == 0 || a == -7) && (b == 4 || b == 11 || b == -3 || b == -10)) ||
+        ((b == 7 || b == 0 || b == -7) && (a == 4 || a == 11 || a == -3 || a == -10))) { return false; };
+  if (a > b) { var int = a - b;	} else { var int = b - a; };
+    if (int == 2 || int == 4 || int == 5 || int == 7 || int == 9) { return true; } else { return false; };
+};
 
-		function grau2notaVex(grau) {
-			switch(grau){
-		   case -11: return "e/2"; break;
-			 case -10: return "f/2"; break;
-			 case -9: return "g/2"; break;
-			 case -8: return "a/2"; break;
-			 case -7: return "b/2"; break;
-			 case -6: return "c/3"; break;
-			 case -5: return "d/3"; break;
-			 case -4: return "e/3"; break;
-			 case -3: return "f/3"; break;
-			 case -2: return "g/3"; break;
-			 case -1: return "a/3"; break;
-			 case -0: return "b/3"; break;
-			 case 1: return "c/4"; break;
-			 case 2: return "d/4"; break;
-			 case 3: return "e/4"; break;
-			 case 4: return "f/4"; break;
-			 case 5: return "g/4"; break;
-			 case 6: return "a/4"; break;
-			 case 7: return "b/4"; break;
-			 case 8: return "c/5"; break;
-			 case 9: return "d/5"; break;
-			 case 10: return "e/5"; break;
-			 case 11: return "f/5"; break;
-			 case 12: return "g/5"; break;
-		 };
-		};
+function grau2notaVex(grau) {
+    switch(grau){
+    case -11: return "e/2"; break;
+      case -10: return "f/2"; break;
+      case -9: return "g/2"; break;
+      case -8: return "a/2"; break;
+      case -7: return "b/2"; break;
+      case -6: return "c/3"; break;
+      case -5: return "d/3"; break;
+      case -4: return "e/3"; break;
+      case -3: return "f/3"; break;
+      case -2: return "g/3"; break;
+      case -1: return "a/3"; break;
+      case -0: return "b/3"; break;
+      case 1: return "c/4"; break;
+      case 2: return "d/4"; break;
+      case 3: return "e/4"; break;
+      case 4: return "f/4"; break;
+      case 5: return "g/4"; break;
+      case 6: return "a/4"; break;
+      case 7: return "b/4"; break;
+      case 8: return "c/5"; break;
+      case 9: return "d/5"; break;
+      case 10: return "e/5"; break;
+      case 11: return "f/5"; break;
+      case 12: return "g/5"; break;
+  };
+};
 
-		function grau2notaMidi(grau) {
-			switch(grau){
-		   case -11: return 40; break;
-			 case -10: return 41; break;
-			 case -9: return 43; break;
-			 case -8: return 45; break;
-			 case -7: return 47; break;
-			 case -6: return 48; break;
-			 case -5: return 50; break;
-			 case -4: return 52; break;
-			 case -3: return 53; break;
-			 case -2: return 55; break;
-			 case -1: return 57; break;
-			 case -0: return 59; break;
-			 case 1: return 60; break;
-			 case 2: return 62; break;
-			 case 3: return 64; break;
-			 case 4: return 65; break;
-			 case 5: return 67; break;
-			 case 6: return 69; break;
-			 case 7: return 71; break;
-			 case 8: return 72; break;
-			 case 9: return 74; break;
-			 case 10: return 76; break;
-			 case 11: return 77; break;
-			 case 12: return 79; break;
-		 };
-		};
+function grau2notaMidi(grau) {
+    switch(grau){
+    case -11: return 40; break;
+      case -10: return 41; break;
+      case -9: return 43; break;
+      case -8: return 45; break;
+      case -7: return 47; break;
+      case -6: return 48; break;
+      case -5: return 50; break;
+      case -4: return 52; break;
+      case -3: return 53; break;
+      case -2: return 55; break;
+      case -1: return 57; break;
+      case -0: return 59; break;
+      case 1: return 60; break;
+      case 2: return 62; break;
+      case 3: return 64; break;
+      case 4: return 65; break;
+      case 5: return 67; break;
+      case 6: return 69; break;
+      case 7: return 71; break;
+      case 8: return 72; break;
+      case 9: return 74; break;
+      case 10: return 76; break;
+      case 11: return 77; break;
+      case 12: return 79; break;
+  };
+};
 
-		function desmarcaBotao(num) {
-      var bot1 = "paralelo" + num;
-			var bot2 = "direto" + num;
-			var bot3 = "obliquo" + num;
-			var bot4 = "contrario" + num;
-			document.getElementById(bot1).style.backgroundColor = "#E4E4E4"
-			document.getElementById(bot2).style.backgroundColor = "#E4E4E4"
-			document.getElementById(bot3).style.backgroundColor = "#E4E4E4"
-			document.getElementById(bot4).style.backgroundColor = "#E4E4E4"
-		}
+function desmarcaBotao(num) {
+var bot1 = "paralelo" + num;
+    var bot2 = "direto" + num;
+    var bot3 = "obliquo" + num;
+    var bot4 = "contrario" + num;
+    document.getElementById(bot1).style.backgroundColor = "#E4E4E4"
+    document.getElementById(bot2).style.backgroundColor = "#E4E4E4"
+    document.getElementById(bot3).style.backgroundColor = "#E4E4E4"
+    document.getElementById(bot4).style.backgroundColor = "#E4E4E4"
+}
 
-    function mostraBotoes() {
-      for (var x=1;x<qtdCompassos;x++) {
-        document.getElementById('paralelo'+x).hidden = false;
-        document.getElementById('direto'+x).hidden = false;
-        document.getElementById('obliquo'+x).hidden = false;
-        document.getElementById('contrario'+x).hidden = false;
-      };
-    };
+function mostraBotoes() {
+  for (var x=1;x<qtdCompassos;x++) {
+    document.getElementById('paralelo'+x).hidden = false;
+    document.getElementById('direto'+x).hidden = false;
+    document.getElementById('obliquo'+x).hidden = false;
+    document.getElementById('contrario'+x).hidden = false;
+  };
+};
 
-    function escondeBotoes() {
-      for (var x=1;x<qtdCompassos;x++) {
-        document.getElementById('paralelo'+x).hidden = true;
-        document.getElementById('direto'+x).hidden = true;
-        document.getElementById('obliquo'+x).hidden = true;
-        document.getElementById('contrario'+x).hidden = true;
-      };
-    };
+function escondeBotoes() {
+  for (var x=1;x<qtdCompassos;x++) {
+    document.getElementById('paralelo'+x).hidden = true;
+    document.getElementById('direto'+x).hidden = true;
+    document.getElementById('obliquo'+x).hidden = true;
+    document.getElementById('contrario'+x).hidden = true;
+  };
+};
 
-    function carregaNivel(n) { //console.log("carrega nível:", n);
-      n = parseInt(n);
-      switch(n) {
-        case 1: limT = false; nivA1 = 1; nivA2 = 2; nivP1 = 3; nivP2 = 2; break;
-        case 2: limT = false; nivA1 = 2; nivA2 = 2; nivP1 = 4; nivP2 = 2; break;
-        case 3: limT = false; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
-        case 4: limT = false; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
-        case 5: limT = 40; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
-        case 6: limT = 30; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
-        case 7: limT = 23; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
-        case 8: limT = 20; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
-        case 9: limT = 16; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
-        case 10: limT = 12; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
-      };
-    };
+function carregaNivel(n) { //console.log("carrega nível:", n);
+  n = parseInt(n);
+  switch(n) {
+    case 1: limT = false; nivA1 = 1; nivA2 = 2; nivP1 = 3; nivP2 = 2; break;
+    case 2: limT = false; nivA1 = 2; nivA2 = 2; nivP1 = 4; nivP2 = 2; break;
+    case 3: limT = false; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
+    case 4: limT = false; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
+    case 5: limT = 40; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
+    case 6: limT = 30; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
+    case 7: limT = 23; nivA1 = 3; nivA2 = 2; nivP1 = 3; nivP2 = 3; break;
+    case 8: limT = 20; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
+    case 9: limT = 16; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
+    case 10: limT = 12; nivA1 = 3; nivA2 = 3; nivP1 = 3; nivP2 = 4; break;
+  };
+};
 
-    function regressiva() {
-      if (questao > qtdQ) { return; };
-      if (limT) {
-        clearInterval(reg);
-        reg = setInterval(mostraTempo, 1000);
-        document.getElementById('timer').hidden = false;
-      } else { document.getElementById('timer').hidden = true; };
+function regressiva() {
+  if (questao > qtdQ) { return; };
+  if (limT) {
+    clearInterval(reg);
+    reg = setInterval(mostraTempo, 1000);
+    document.getElementById('timer').hidden = false;
+  } else { document.getElementById('timer').hidden = true; };
 
 
 
-      function mostraTempo() {
-        document.getElementById('timer').innerHTML = limT;
-        limT--;
-        if (limT < 0) {
-          clearInterval(reg);
-          document.getElementById('timer').hidden = true;
-          carregaNivel(document.getElementById('nivel').value);
-          proximo(); };
-      };
-    };
+  function mostraTempo() {
+    document.getElementById('timer').innerHTML = limT;
+    limT--;
+    if (limT < 0) {
+      clearInterval(reg);
+      document.getElementById('timer').hidden = true;
+      carregaNivel(document.getElementById('nivel').value);
+      proximo(); };
+  };
+};
 
-    function getIp(callback)  {
-        function response(s)  {
-            callback(window.userip);
+function getIp(callback)  {
+    function response(s)  {
+        callback(window.userip);
 
-            s.onload = s.onerror = null;
-            document.body.removeChild(s);
-        }
+        s.onload = s.onerror = null;
+        document.body.removeChild(s);
+    }
 
-        function trigger() {
-            window.userip = false;
+    function trigger() {
+        window.userip = false;
 
-            var s = document.createElement("script");
-            s.async = true;
-            s.onload = function() {
-                response(s);
-            };
-            s.onerror = function() {
-                response(s);
-            };
+        var s = document.createElement("script");
+        s.async = true;
+        s.onload = function() {
+            response(s);
+        };
+        s.onerror = function() {
+            response(s);
+        };
 
-            s.src = "https://l2.io/ip.js?var=userip";
-            document.body.appendChild(s);
-        }
+        s.src = "https://l2.io/ip.js?var=userip";
+        document.body.appendChild(s);
+    }
 
-        if (/^(interactive|complete)$/i.test(document.readyState)) {
-            trigger();
-        } else {
-            document.addEventListener('DOMContentLoaded', trigger);
-        }
-    };
+    if (/^(interactive|complete)$/i.test(document.readyState)) {
+        trigger();
+    } else {
+        document.addEventListener('DOMContentLoaded', trigger);
+    }
+};
 
 function resetaVariaveis() {
   vozes = [[]];
@@ -351,416 +359,404 @@ function resetaVariaveis() {
   nivP1 = null;
   nivP2 = null;
   reg = null;
+  d = new Date(); //console.log(d);
+  var dt = d.toString(); //console.log(dt);
+  dt = dt.substr(0, dt.length-41); //console.log(dt);
+  relato+=dt + ";";
 };
 
-    // ----------- funções principais ---------------------------- //
+// ----------- funções principais ---------------------------- //
 
-		function desenhaPauta() {
+function desenhaPauta() {
 
-			  ctx.fillStyle="#777777";
-				ctx.fillRect(0,0,700,340);
-		    ctx.fillStyle="#f1f1f1";
-				ctx.fillRect(2,2,696,336);
-				ctx.fillStyle="#353535";
+      ctx.fillStyle="#777777";
+        ctx.fillRect(0,0,700,340);
+    ctx.fillStyle="#f1f1f1";
+        ctx.fillRect(2,2,696,336);
+        ctx.fillStyle="#353535";
 
-		  	 stave1[1] = new Stave(30, 25, 120);
-		  	 stave2[1] = new Stave(30, 105, 120);
+      stave1[1] = new Stave(30, 25, 120);
+      stave2[1] = new Stave(30, 105, 120);
 
-		   	connector[0] = new StaveConnector(stave1[1], stave2[1]);
-		    connector[0].setType( StaveConnector.type.BRACKET);
-		    connector[0].setContext(ctx).draw();
+    connector[0] = new StaveConnector(stave1[1], stave2[1]);
+    connector[0].setType( StaveConnector.type.BRACKET);
+    connector[0].setContext(ctx).draw();
 
-		  	connector[1] = new StaveConnector(stave1[1], stave2[1]);
-		    connector[1].setType( StaveConnector.type.SINGLE);
+    connector[1] = new StaveConnector(stave1[1], stave2[1]);
+    connector[1].setType( StaveConnector.type.SINGLE);
 
-		    for (i=2;i<=qtdCompassos;i++){
+    for (i=2;i<=qtdCompassos;i++){
 
-		     var x = ((i-2)*90) + 150;
+      var x = ((i-2)*90) + 150;
 
-		      stave1[i] = new Stave(x, 25, 90);
-		      stave2[i] = new Stave(x, 105, 90);
-		      connector[i] = new StaveConnector(stave1[i], stave2[i]);
-		      connector[i].setType( StaveConnector.type.SINGLE);
-		      };
-
-		    for (i=1;i<=qtdCompassos;i++) {
-
-
-		      stave1[i].setContext(ctx).draw();
-		      stave2[i].setContext(ctx).draw();
-		      connector[i].setContext(ctx).draw();
-
-		      if (i == 1)  {
-		      	stave1[i].addClef("treble").addKeySignature("C").setContext(ctx).draw();
-		      	stave2[i].addClef("bass").addKeySignature("C").setContext(ctx).draw();};
-
-		      if (i == qtdCompassos) {
-		        connector[i+1] = new StaveConnector(stave1[i], stave2[i]);
-		        connector[i+1].setType( StaveConnector.type.BOLD_DOUBLE_RIGHT);
-		        connector[i+1].setContext(ctx).draw();};
-		   };
-
-		};
-
-		function desenhaNotas(){
-      document.getElementById('interrog').hidden = true;
-      confirma = false;
-			// Create the notes
-			var voz1 = [];
-			var voz2 = [];
-			for (var x=0;x<qtdCompassos;x++) {
-				var nota1 = grau2notaVex(vozes[x][0]);
-				var nota2 = grau2notaVex(vozes[x][1]);
-         voz1.push(new StaveNote({clef: "treble", keys: [nota1], duration: "w" }));
-				 voz2.push(new StaveNote({clef: "bass", keys: [nota2], duration: "w" }));
-			};
-			// Create a voice in 4/4 and add above notes
-			const voice1 = new Voice({ num_beats: qtdCompassos, beat_value: 1 });
-			const voice2 = new Voice({ num_beats: qtdCompassos, beat_value: 1 });
-			voice1.addTickables(voz1);
-			voice2.addTickables(voz2);
-
-			// Format and justify the notes to 400 pixels.
-			var span = qtdCompassos * 90;
-			new Formatter().joinVoices([voice1]).format([voice1], span);
-			new Formatter().joinVoices([voice2]).format([voice2], span);
-
-			// Render voice
-			voice1.draw(ctx, stave1[1]);
-			voice2.draw(ctx, stave2[1]);
-
-      confirma = true; // console.log("confirma");
-		};
-
-    function mostraInterrog() {
-       document.getElementById('interrog').hidden = false;
-    };
-
-		function criaContraponto(){
-			var p = 0, n = 0, crt = 0.5, cp = false;
-      vozes[0][0] = 1 + Math.floor(Math.random()*7); //console.log("0", vozes[0, 0]);
-
-			for (var x=1;x<qtdCompassos;x++){
-				vozes[x] = [];
-				if (crt > 0.8) { crt = 0.8; } else if (crt < 0.2) { crt = 0.2 } else {
-					if (p > n) { crt += 0.1 } else if (p < n) { crt -= 0.1 };
-				};
-				var dir = Math.round(Math.random()); //console.log("direção:",dir);
-				if (dir >= crt) { dir = 1; } else { dir = -1; };
-				if (cp) { dir = cp; };
-				if (vozes[x-1][0] >= 12) { dir = -1; } else if (vozes[x-1][0] <= -4) { dir = 1; };
-				if (dir > 0) { p++; } else { n++; };
-				var ch = Math.random(); //console.log("chance:",ch);
-         if (ch <= 0.5) { vozes[x][0] = vozes[x-1][0] + (1 * dir); cp = false; } else
-				 if (ch <= 0.6) { vozes[x][0] = vozes[x-1][0] + (2 * dir); cp = false; } else
-				 if (ch <= 0.7) { vozes[x][0] = vozes[x-1][0] + (3 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else
-				 if (ch <= 0.8) { vozes[x][0] = vozes[x-1][0] + (4 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else { vozes[x][0] = vozes[x-1][0]; cp = false };
-        if (vozes[x][0] > 12) { vozes[x][0] = 12; } else if (vozes[x][0] < -4) { vozes[x][0] = -4; };
-          //console.log(x, "direção", dir, crt, "=", vozes[x][0]);
-			};
-
-			var p = 0, n = 0, crt = 0.5, cp = false, conso = false;
-
-      while (!conso) {
-				vozes[0][1] = -6 + Math.floor(Math.random()*7); //console.log("0", vozes[0][1]);
-				conso = testaIntConso(vozes[0][0], vozes[0][1]);
-			};
-
-			for (var x=1;x<qtdCompassos;x++){
-				conso = false, seg = 0;
-				while (!conso && seg < 100) { seg++;
-					if (crt > 0.8) { crt = 0.8; } else if (crt < 0.2) { crt = 0.2 } else {
-						if (p > n) { crt += 0.1 } else if (p < n) { crt -= 0.1 };
-					};
-
-					var dir = Math.round(Math.random()); //console.log("direção:",dir);
-					if (dir >= crt) { dir = 1; } else { dir = -1; };
-					if (cp) { dir = cp; };
-					if (vozes[x-1][1] >= 5) { dir = -1; } else if (vozes[x-1][1] <= -11) { dir = 1; };
-					if (dir > 0) { p++; } else { n++; };
-					var ch = Math.random(); //console.log("chance:",ch);
-	         if (ch <= 0.5) { vozes[x][1] = vozes[x-1][1] + (1 * dir); cp = false; } else
-					 if (ch <= 0.6) { vozes[x][1] = vozes[x-1][1] + (2 * dir); cp = false; } else
-					 if (ch <= 0.65) { vozes[x][1] = vozes[x-1][1] + (3 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else
-					 if (ch <= 0.75) { vozes[x][1] = vozes[x-1][1] + (4 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else { vozes[x][1] = vozes[x-1][1]; cp = false };
-
-	        if (vozes[x][1] > 5) { vozes[x][1] = 5; } else if (vozes[x][1] < -11) { vozes[x][1] = -11; };
-
-					var int = vozes[x][0] - vozes[x][1];
-					if (int > 9) { vozes[x][1] = vozes[x][1] + 3; } else
-					if (int < 0) { vozes[x][1] = vozes[x][1] - 4; } else
-					if (int < 2) { vozes[x][1] = vozes[x][1] - 1; };
-
-					if (vozes[x-1][0] == vozes[x][0] && vozes[x-1][1] == vozes[x][1]) { // console.log(x,"igual");
-						if (int > 7) { vozes[x][1] = vozes[x][1] + (1 + Math.floor(Math.random()*7)); } else {  vozes[x][1] = vozes[x][1] - (1 + Math.floor(Math.random()*7)); }; };
-
-					conso = testaIntConso(vozes[x][0], vozes[x][1]);
-				};
-			};
-		};
-
-		function tocaContraponto() {
-      document.getElementById('tocar').hidden = true;
-      var inst = document.getElementById('timbre').value; //console.log(inst);
-			var notas = [];
-			var an = 1.2;
-		  for (var x=0;x<qtdCompassos;x++) {
-				var nota1 = grau2notaMidi(vozes[x][0]), nota2 = grau2notaMidi(vozes[x][1]);
-				var arp1 = Math.random()*0.04;
-				var arp2 = Math.random()*0.06;
-				var t = x * an;
-				notas.push({ time: t + arp1, note: nota1, duration: an }, { time: t + arp2, note: nota2, duration: an });
-			};
-
-			Soundfont.instrument(ac, inst).then(function (timbre) {
-				timbre.schedule(ac.currentTime, notas);
-		  });
-      setTimeout(crono, an*qtdCompassos*1000+1000)
-      function crono() {
-        if (limT < 5) { document.getElementById('tocar').hidden = false; };
-        document.getElementById('resposta').hidden = false;
-        document.getElementById('proximo').hidden = false;
-      };
-		};
-
-    function movimentoVozes(m) {
-      if (bloqueia) { return; };
-      mN = m.slice(-1); // número do movimento
-      mT = m.slice(0, m.length-1); // tipo do movimento
-      desmarcaBotao(mN)
-			document.getElementById(m).style.backgroundColor = "yellow";
-      mov[contaT][questao][mN] = mT;		//console.log(mT);
-    };
-
-    function analisaContraponto() {
-      for (var x=1;x<=qtdCompassos-1;x++) {
-        var int1 = vozes[x-1][0] - vozes[x-1][1];
-        var int2 = vozes[x][0] - vozes[x][1];
-        if (vozes[x-1][0] != vozes[x][0] && int1 == int2) { mov[contaT][questao][0][x-1] = "paralelo" } else
-          if (((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] > vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] < vozes[x][1])) && int1 != int2) { mov[contaT][questao][0][x-1] = "direto" } else
-            if ((vozes[x-1][0] == vozes[x][0] && vozes[x-1][1] != vozes[x][1]) || (vozes[x-1][0] != vozes[x][0] && vozes[x-1][1] == vozes[x][1])) { mov[contaT][questao][0][x-1] = "obliquo" } else
-              if ((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] < vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] > vozes[x][1])) { mov[contaT][questao][0][x-1] = "contrario" };
+      stave1[i] = new Stave(x, 25, 90);
+      stave2[i] = new Stave(x, 105, 90);
+      connector[i] = new StaveConnector(stave1[i], stave2[i]);
+      connector[i].setType( StaveConnector.type.SINGLE);
       };
 
+    for (i=1;i<=qtdCompassos;i++) {
+
+
+      stave1[i].setContext(ctx).draw();
+      stave2[i].setContext(ctx).draw();
+      connector[i].setContext(ctx).draw();
+
+      if (i == 1)  {
+        stave1[i].addClef("treble").addKeySignature("C").setContext(ctx).draw();
+        stave2[i].addClef("bass").addKeySignature("C").setContext(ctx).draw();};
+
+      if (i == qtdCompassos) {
+        connector[i+1] = new StaveConnector(stave1[i], stave2[i]);
+        connector[i+1].setType( StaveConnector.type.BOLD_DOUBLE_RIGHT);
+        connector[i+1].setContext(ctx).draw();};
     };
+
+};
+
+function desenhaNotas(){
+document.getElementById('interrog').hidden = true;
+confirma = false;
+    // Create the notes
+    var voz1 = [];
+    var voz2 = [];
+    for (var x=0;x<qtdCompassos;x++) {
+        var nota1 = grau2notaVex(vozes[x][0]);
+        var nota2 = grau2notaVex(vozes[x][1]);
+  voz1.push(new StaveNote({clef: "treble", keys: [nota1], duration: "w" }));
+          voz2.push(new StaveNote({clef: "bass", keys: [nota2], duration: "w" }));
+    };
+    // Create a voice in 4/4 and add above notes
+    const voice1 = new Voice({ num_beats: qtdCompassos, beat_value: 1 });
+    const voice2 = new Voice({ num_beats: qtdCompassos, beat_value: 1 });
+    voice1.addTickables(voz1);
+    voice2.addTickables(voz2);
+
+    // Format and justify the notes to 400 pixels.
+    var span = qtdCompassos * 90;
+    new Formatter().joinVoices([voice1]).format([voice1], span);
+    new Formatter().joinVoices([voice2]).format([voice2], span);
+
+    // Render voice
+    voice1.draw(ctx, stave1[1]);
+    voice2.draw(ctx, stave2[1]);
+
+confirma = true; // console.log("confirma");
+};
+
+function mostraInterrog() {
+    document.getElementById('interrog').hidden = false;
+};
+
+function criaContraponto(){
+    var p = 0, n = 0, crt = 0.5, cp = false;
+vozes[0][0] = 1 + Math.floor(Math.random()*7); //console.log("0", vozes[0, 0]);
+
+    for (var x=1;x<qtdCompassos;x++){
+        vozes[x] = [];
+        if (crt > 0.8) { crt = 0.8; } else if (crt < 0.2) { crt = 0.2 } else {
+            if (p > n) { crt += 0.1 } else if (p < n) { crt -= 0.1 };
+        };
+        var dir = Math.round(Math.random()); //console.log("direção:",dir);
+        if (dir >= crt) { dir = 1; } else { dir = -1; };
+        if (cp) { dir = cp; };
+        if (vozes[x-1][0] >= 12) { dir = -1; } else if (vozes[x-1][0] <= -4) { dir = 1; };
+        if (dir > 0) { p++; } else { n++; };
+        var ch = Math.random(); //console.log("chance:",ch);
+  if (ch <= 0.5) { vozes[x][0] = vozes[x-1][0] + (1 * dir); cp = false; } else
+          if (ch <= 0.6) { vozes[x][0] = vozes[x-1][0] + (2 * dir); cp = false; } else
+          if (ch <= 0.7) { vozes[x][0] = vozes[x-1][0] + (3 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else
+          if (ch <= 0.8) { vozes[x][0] = vozes[x-1][0] + (4 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else { vozes[x][0] = vozes[x-1][0]; cp = false };
+if (vozes[x][0] > 12) { vozes[x][0] = 12; } else if (vozes[x][0] < -4) { vozes[x][0] = -4; };
+  //console.log(x, "direção", dir, crt, "=", vozes[x][0]);
+    };
+
+    var p = 0, n = 0, crt = 0.5, cp = false, conso = false;
+
+while (!conso) {
+        vozes[0][1] = -6 + Math.floor(Math.random()*7); //console.log("0", vozes[0][1]);
+        conso = testaIntConso(vozes[0][0], vozes[0][1]);
+    };
+
+    for (var x=1;x<qtdCompassos;x++){
+        conso = false, seg = 0;
+        while (!conso && seg < 100) { seg++;
+            if (crt > 0.8) { crt = 0.8; } else if (crt < 0.2) { crt = 0.2 } else {
+                if (p > n) { crt += 0.1 } else if (p < n) { crt -= 0.1 };
+            };
+
+            var dir = Math.round(Math.random()); //console.log("direção:",dir);
+            if (dir >= crt) { dir = 1; } else { dir = -1; };
+            if (cp) { dir = cp; };
+            if (vozes[x-1][1] >= 5) { dir = -1; } else if (vozes[x-1][1] <= -11) { dir = 1; };
+            if (dir > 0) { p++; } else { n++; };
+            var ch = Math.random(); //console.log("chance:",ch);
+      if (ch <= 0.5) { vozes[x][1] = vozes[x-1][1] + (1 * dir); cp = false; } else
+              if (ch <= 0.6) { vozes[x][1] = vozes[x-1][1] + (2 * dir); cp = false; } else
+              if (ch <= 0.65) { vozes[x][1] = vozes[x-1][1] + (3 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else
+              if (ch <= 0.75) { vozes[x][1] = vozes[x-1][1] + (4 * dir); if (dir > 0) { cp = -1; } else { cp = 1 } } else { vozes[x][1] = vozes[x-1][1]; cp = false };
+
+    if (vozes[x][1] > 5) { vozes[x][1] = 5; } else if (vozes[x][1] < -11) { vozes[x][1] = -11; };
+
+            var int = vozes[x][0] - vozes[x][1];
+            if (int > 9) { vozes[x][1] = vozes[x][1] + 3; } else
+            if (int < 0) { vozes[x][1] = vozes[x][1] - 4; } else
+            if (int < 2) { vozes[x][1] = vozes[x][1] - 1; };
+
+            if (vozes[x-1][0] == vozes[x][0] && vozes[x-1][1] == vozes[x][1]) { // console.log(x,"igual");
+                if (int > 7) { vozes[x][1] = vozes[x][1] + (1 + Math.floor(Math.random()*7)); } else {  vozes[x][1] = vozes[x][1] - (1 + Math.floor(Math.random()*7)); }; };
+
+            conso = testaIntConso(vozes[x][0], vozes[x][1]);
+        };
+    };
+};
+
+function tocaContraponto() {
+document.getElementById('tocar').hidden = true;
+var inst = document.getElementById('timbre').value; //console.log(inst);
+    var notas = [];
+    var an = 1.2;
+  for (var x=0;x<qtdCompassos;x++) {
+        var nota1 = grau2notaMidi(vozes[x][0]), nota2 = grau2notaMidi(vozes[x][1]);
+        var arp1 = Math.random()*0.04;
+        var arp2 = Math.random()*0.06;
+        var t = x * an;
+        notas.push({ time: t + arp1, note: nota1, duration: an }, { time: t + arp2, note: nota2, duration: an });
+    };
+
+    Soundfont.instrument(ac, inst).then(function (timbre) {
+        timbre.schedule(ac.currentTime, notas);
+  });
+setTimeout(crono, an*qtdCompassos*1000+1000)
+function crono() {
+if (limT < 5) { document.getElementById('tocar').hidden = false; };
+document.getElementById('resposta').hidden = false;
+document.getElementById('proximo').hidden = false;
+};
+};
+
+function movimentoVozes(m) {
+  if (bloqueia) { return; };
+  mN = m.slice(-1); // número do movimento
+  mT = m.slice(0, m.length-1); // tipo do movimento
+  desmarcaBotao(mN)
+        document.getElementById(m).style.backgroundColor = "yellow";
+  mov[contaT][questao][mN] = mT;		//console.log(mT);
+};
+
+function analisaContraponto() {
+  for (var x=1;x<=qtdCompassos-1;x++) {
+    var int1 = vozes[x-1][0] - vozes[x-1][1];
+    var int2 = vozes[x][0] - vozes[x][1];
+    if (vozes[x-1][0] != vozes[x][0] && int1 == int2) { mov[contaT][questao][0][x-1] = "paralelo" } else
+      if (((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] > vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] < vozes[x][1])) && int1 != int2) { mov[contaT][questao][0][x-1] = "direto" } else
+        if ((vozes[x-1][0] == vozes[x][0] && vozes[x-1][1] != vozes[x][1]) || (vozes[x-1][0] != vozes[x][0] && vozes[x-1][1] == vozes[x][1])) { mov[contaT][questao][0][x-1] = "obliquo" } else
+          if ((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] < vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] > vozes[x][1])) { mov[contaT][questao][0][x-1] = "contrario" };
+  };
+
+};
 
 // ------------- funções secundárias -----------------------------
 
-    function iniciar() {
-      resetaVariaveis();
-      document.getElementById('salvar').hidden = true;
-      document.getElementById('pagIn').hidden = true;
-      document.getElementById('tocar').hidden = false;
-      document.getElementById('contaQ').hidden = false;
-      if (limT < 5) { document.getElementById('proximo').hidden = false; };
-      document.getElementById('iniciar').hidden = true;
-      document.getElementById('iniciar').innerHTML = "Recomeçar";
-      confirma = true;
-      tentativa();
-    };
+function iniciar() {
+  resetaVariaveis();
+  document.getElementById('salvar').hidden = true;
+  document.getElementById('pagIn').hidden = true;
+  document.getElementById('tocar').hidden = false;
+  document.getElementById('contaQ').hidden = false;
+  if (limT < 5) { document.getElementById('proximo').hidden = false; };
+  document.getElementById('iniciar').hidden = true;
+  document.getElementById('iniciar').innerHTML = "Recomeçar";
+  confirma = true;
+  tentativa();
+};
 
-    function tentativa() {
-      d = new Date(); //console.log(d);
-      tempo1 = Math.round(d.getTime()/1000); //console.log("marco temporal:", tempo1);
-      contaT++;
-      tempoT[contaT] = [];
-      mov[contaT] = [];
-      mov[contaT][0] = document.getElementById('nivel').value;
-      questao = 0;
-      document.getElementById('proximo').innerHTML = "Próximo";
-      document.getElementById('resposta').hidden = false;
-      carregaNivel(document.getElementById('nivel').value);
-      proximo();
-      //setTimeout(regressiva, 5000);
-    };
+function tentativa() {
+  d = new Date(); //console.log(d);
+  tempo1 = Math.round(d.getTime()/1000); //console.log("marco temporal:", tempo1);
+  contaT++;
+  tempoT[contaT] = [];
+  mov[contaT] = [];
+  mov[contaT][0] = document.getElementById('nivel').value;
+  questao = 0;
+  document.getElementById('proximo').innerHTML = "Próximo";
+  document.getElementById('resposta').hidden = false;
+  carregaNivel(document.getElementById('nivel').value);
+  proximo();
+  //setTimeout(regressiva, 5000);
+};
 
-    function proximo() {
-      clearInterval(reg);
-      carregaNivel(document.getElementById('nivel').value);
-      document.getElementById('timer').hidden = true;
-      document.getElementById('proximo').hidden = true;
-      document.getElementById('resposta').hidden = true;
-      escondeBotoes();
-      if (questao > 0 && !bloqueia) {
-        d = new Date(); //console.log(d);
-        tempo2 = Math.round(d.getTime()/1000); //console.log("tempo 1 e 2", tempo1, tempo2);
-        tempoT[contaT][questao] = tempo2 - tempo1;
-        //console.log(contaT, questao, tempoT[contaT][questao]);
-        tempo1 = tempo2
-        for (var r=1;r<=qtdCompassos-1;r++) { if (!mov[contaT][questao][r]) { mov[contaT][questao][r] = "nulo"; }; };
-        analisa();
+function proximo() {
+  clearInterval(reg);
+  carregaNivel(document.getElementById('nivel').value);
+  document.getElementById('timer').hidden = true;
+  document.getElementById('proximo').hidden = true;
+  document.getElementById('resposta').hidden = true;
+  escondeBotoes();
+  if (questao > 0 && !bloqueia) {
+    d = new Date(); //console.log(d);
+    tempo2 = Math.round(d.getTime()/1000); //console.log("tempo 1 e 2", tempo1, tempo2);
+    tempoT[contaT][questao] = tempo2 - tempo1;
+    //console.log(contaT, questao, tempoT[contaT][questao]);
+    tempo1 = tempo2
+    for (var r=1;r<=qtdCompassos-1;r++) { if (!mov[contaT][questao][r]) { mov[contaT][questao][r] = "nulo"; }; };
+    analisa();
+  };
+  bloqueia = false;
+  if (confirma) { questao++; mov[contaT][questao] = []; };
+  if (questao<=qtdQ) {
+    for (var x=1;x<qtdCompassos;x++) { desmarcaBotao(x); };
+    if (Math.random() > 0.5) { soaudio = true; } else { soaudio = false; };
+    mov[contaT][questao][7] = soaudio;
+    if (soaudio) { qtdCompassos = Math.floor(Math.random()*nivA1) + nivA2; } else { qtdCompassos = Math.floor(Math.random()*nivP1) + nivP2; };
+    mostraBotoes();
+    desenhaPauta();
+    document.getElementById('contaQ').innerHTML = "Questão " + questao;
+    if (questao == qtdQ) { document.getElementById('proximo').innerHTML = "Finalizar"; };
+    criaContraponto();
+    tocaContraponto();
+    if (soaudio) { mostraInterrog(); } else { desenhaNotas(); };
+    setTimeout(regressiva, 3000);
+  } else { final(); };
+};
+
+function final() { //console.log("Fim");
+  //  tempoT[contaT] = Math.round(t - tempoT[contaT-1]); console.log("t"+contaT, tempoT[contaT]);
+  document.getElementById('iniciar').hidden = false;
+  document.getElementById('proximo').hidden = true;
+  document.getElementById('resposta').hidden = true;
+  document.getElementById('salvar').hidden = false;
+  //console.log(mov);
+  salvaTentativa();
+};
+
+function encrypt(text, shift) {
+  let result = '';
+  for (let i = 0; i < text.length; i++) {
+    let char = text[i];
+    let charCode = text.charCodeAt(i);
+
+    if (charCode >= 65 && charCode <= 90) { // uppercase letters
+      char = String.fromCharCode((charCode - 65 + shift) % 26 + 65);
+    } else if (charCode >= 97 && charCode <= 122) { // lowercase letters
+      char = String.fromCharCode((charCode - 97 + shift) % 26 + 97);
+    } else if (charCode >= 48 && charCode <= 57) { // numbers
+      char = String.fromCharCode((charCode - 48 + shift) % 10 + 48);
+    }
+
+    result += char;
+  }
+  return result;
+}
+
+function resposta() {
+  d = new Date(); //console.log(d);
+  tempo2 = Math.round(d.getTime()/1000); //console.log("tempo 1 e 2", tempo1, tempo2);
+  tempoT[contaT][questao] = tempo2 - tempo1;
+  //console.log(contaT, questao, tempoT[contaT][questao]);
+  tempo1 = tempo2
+  for (var r=1;r<=qtdCompassos-1;r++) { if (!mov[contaT][questao][r]) { mov[contaT][questao][r] = "nulo"; }; };
+  analisa();
+  colorirBotoes();
+  bloqueia = true;
+  if (soaudio) {
+    document.getElementById('interrog').hidden = true;
+    desenhaNotas();
+  };
+};
+
+function analisa() {
+  mov[contaT][questao][0] = []
+
+  for (var x=1;x<=qtdCompassos-1;x++) { //console.log(x, vozes);
+    int1 = vozes[x-1][0] - vozes[x-1][1];
+    int2 = vozes[x][0] - vozes[x][1];
+
+    if (vozes[x-1][0] != vozes[x][0] && int1 == int2) { mov[contaT][questao][0][x] = "paralelo"; } else
+      if (((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] > vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] < vozes[x][1])) && int1 != int2) { mov[contaT][questao][0][x] = "direto"; } else
+      if ((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] < vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] > vozes[x][1])) { mov[contaT][questao][0][x] = "contrario"; } else
+        if ((vozes[x-1][0] == vozes[x][0] && vozes[x-1][1] != vozes[x][1]) || (vozes[x-1][0] != vozes[x][0] && vozes[x-1][1] == vozes[x][1])) { mov[contaT][questao][0][x] = "obliquo"; }
+  };
+};
+
+function colorirBotoes() {
+    for (var x=1;x<=qtdCompassos-1;x++) {
+      var bt = mov[contaT][questao][0][x] + x;
+      document.getElementById(bt).style.backgroundColor = "green";
+    };
+};
+
+function contaPontos() {
+    var somaT = 0;
+    for (var q=1;q<=qtdQ;q++) {
+      var soma = 0;
+      var i = 1/(mov[contaT][q][0].length-1); //console.log("i",i);
+      for (var y=1;y<mov[contaT][q][0].length;y++) { //console.log(mov[contaT][q][y], "==", mov[contaT][q][0][y]);
+        if (mov[contaT][q][y] == mov[contaT][q][0][y]) { soma += i; };
       };
-      bloqueia = false;
-      if (confirma) { questao++; mov[contaT][questao] = []; };
-      if (questao<=qtdQ) {
-        for (var x=1;x<qtdCompassos;x++) { desmarcaBotao(x); };
-        if (Math.random() > 0.5) { soaudio = true; } else { soaudio = false; };
-        mov[contaT][questao][7] = soaudio;
-        if (soaudio) { qtdCompassos = Math.floor(Math.random()*nivA1) + nivA2; } else { qtdCompassos = Math.floor(Math.random()*nivP1) + nivP2; };
-        mostraBotoes();
-        desenhaPauta();
-        document.getElementById('contaQ').innerHTML = "Questão " + questao;
-        if (questao == qtdQ) { document.getElementById('proximo').innerHTML = "Finalizar"; };
-        criaContraponto();
-        tocaContraponto();
-        if (soaudio) { mostraInterrog(); } else { desenhaNotas(); };
-        setTimeout(regressiva, 3000);
-      } else { final(); };
+        mov[contaT][q][6] = soma; //console.log(contaT, q, mov[contaT][q][6]);
+        somaT+=soma;
     };
+    mov[contaT][11] = (somaT/qtdQ)*10;
+    //console.log(contaT, mov[contaT][11]);
+};
 
-    function final() { //console.log("Fim");
-     //  tempoT[contaT] = Math.round(t - tempoT[contaT-1]); console.log("t"+contaT, tempoT[contaT]);
-      document.getElementById('iniciar').hidden = false;
-      document.getElementById('proximo').hidden = true;
-      document.getElementById('resposta').hidden = true;
-      document.getElementById('salvar').hidden = false;
-      //console.log(mov);
-      salvaTentativa();
-    };
-
-    function modificaTexto() {
-      relato = relato.replace(/a/ig, "$");
-      relato = relato.replace(/e/ig, "£");
-      relato = relato.replace(/i/ig, "¢");
-      relato = relato.replace(/o/ig, "§");
-      relato = relato.replace(/u/ig, "¬");
-      relato = relato.replace(/b/ig, "º");
-      relato = relato.replace(/c/ig, "ª");
-      relato = relato.replace(/d/ig, "[");
-      relato = relato.replace(/f/ig, "]");
-      relato = relato.replace(/g/ig, "{");
-      relato = relato.replace(/h/ig, "}");
-      relato = relato.replace(/j/ig, "?");
-      relato = relato.replace(/l/ig, "'");
-      relato = relato.replace(/m/ig, "*");
-      relato = relato.replace(/n/ig, "+");
-      relato = relato.replace(/p/ig, ">");
-      relato = relato.replace(/q/ig, "<");
-      relato = relato.replace(/r/ig, "^");
-      relato = relato.replace(/s/ig, "~");
-      relato = relato.replace(/t/ig, "=");
-      relato = relato.replace(/v/ig, "¨");
-      relato = relato.replace(/x/ig, "°");
-      relato = relato.replace(/0/ig, "Ƌ");
-      relato = relato.replace(/1/ig, "ƍ");
-      relato = relato.replace(/2/ig, "Ɨ");
-      relato = relato.replace(/3/ig, "Ƣ");
-      relato = relato.replace(/4/ig, "ƭ");
-      relato = relato.replace(/5/ig, "Ʊ");
-      relato = relato.replace(/6/ig, "Ƹ");
-      relato = relato.replace(/7/ig, "Ƨ");
-      relato = relato.replace(/8/ig, "ƛ");
-      relato = relato.replace(/9/ig, "ƞ");
-    };
-
-    function resposta() {
-      d = new Date(); //console.log(d);
-      tempo2 = Math.round(d.getTime()/1000); //console.log("tempo 1 e 2", tempo1, tempo2);
-      tempoT[contaT][questao] = tempo2 - tempo1;
-      //console.log(contaT, questao, tempoT[contaT][questao]);
-      tempo1 = tempo2
-      for (var r=1;r<=qtdCompassos-1;r++) { if (!mov[contaT][questao][r]) { mov[contaT][questao][r] = "nulo"; }; };
-      analisa();
-      colorirBotoes();
-      bloqueia = true;
-      if (soaudio) {
-        document.getElementById('interrog').hidden = true;
-        desenhaNotas();
+function salvaTentativa() {
+    contaPontos();
+    relato+=contaT + "#"; // tentativa
+    result+="Tentativa " + contaT + ": ";
+    relato+=mov[contaT][0] + "#"; // nível
+    var t=0;
+    //console.log(tempoT);
+    for (var q=1;q<=qtdQ;q++) { t+=tempoT[contaT][q]; };
+    tempoT[contaT][0] = t;
+    relato+=t + "#"; // tempo da tentativa
+    relato+=mov[contaT][11] + "#"; // nota da tentativa
+    result+=mov[contaT][11] + " (nível " + mov[contaT][0] + ")\n";
+    for (var q=1;q<=qtdQ;q++) {
+        relato+=mov[contaT][q][7] + ","; // só audio?
+        relato+=tempoT[contaT][q] + ","  // tempo da questão
+        relato+=mov[contaT][q][6] + ","; // nota questão
+      for (var x=1;x<=mov[contaT][q][0].length-1;x++) { //console.log(contaT, q, x, mov[contaT][q][x]);
+        var esc = mov[contaT][q][x] //.slice(0, mov[contaT][q][x].length-1)
+        relato+= esc + "&" + mov[contaT][q][0][x] + "!"; // escolha - resposta correta
       };
-    };
+        relato+="%";
+  }; //console.log(relato);
+  relato+="@";
+};
 
-    function analisa() {
-      mov[contaT][questao][0] = []
+function salvaTudo() {
+    relato+=";";
+    var tTot=0, notaM = 0, tentaM = 0, temp=0;
+    for (var tt=1;tt<=contaT;tt++) {
+        tTot+=mov[tt][11];
+        if (mov[tt][11] > notaM) { notaM = mov[tt][11]; tentaM = tt; };
+        temp+=tempoT[tt][0];
+    }; //console.log("tTot", tTot, temp);
+    var tempMd = Math.round(temp/contaT);
+    var tMd = tTot/contaT;
+    relato+=tempMd + ";" // tempo médio das tentativas
+    relato+=tMd + ";"; // média das notos das tentativas
+    relato+=tentaM + "," + notaM + ";"; // 'tentativa com a nota mais alta' 'nota mais alta'
+    relato+=ipe + ";";
+    //relato+="|" // separador final
+    // result+="Qtd de tentativas: "+contaT+"\n";
+    result+="Tempo médio: " + tempMd + "s\n";
+    result+="Nota mais alta: " + notaM + " (na tentativa " + tentaM + ")\n";
+    alert(result);
+    //console.log(relato);
+    encrypt(relato, 5);
+    salvarArquivo();
+};
 
-      for (var x=1;x<=qtdCompassos-1;x++) { //console.log(x, vozes);
-        int1 = vozes[x-1][0] - vozes[x-1][1];
-        int2 = vozes[x][0] - vozes[x][1];
+function salvarArquivo() { // console.log("salvarArquivo");
 
-        if (vozes[x-1][0] != vozes[x][0] && int1 == int2) { mov[contaT][questao][0][x] = "paralelo"; } else
-         if (((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] > vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] < vozes[x][1])) && int1 != int2) { mov[contaT][questao][0][x] = "direto"; } else
-          if ((vozes[x-1][0] > vozes[x][0] && vozes[x-1][1] < vozes[x][1]) || (vozes[x-1][0] < vozes[x][0] && vozes[x-1][1] > vozes[x][1])) { mov[contaT][questao][0][x] = "contrario"; } else
-           if ((vozes[x-1][0] == vozes[x][0] && vozes[x-1][1] != vozes[x][1]) || (vozes[x-1][0] != vozes[x][0] && vozes[x-1][1] == vozes[x][1])) { mov[contaT][questao][0][x] = "obliquo"; }
-      };
-    };
-
-    function colorirBotoes() {
-        for (var x=1;x<=qtdCompassos-1;x++) {
-          var bt = mov[contaT][questao][0][x] + x;
-          document.getElementById(bt).style.backgroundColor = "green";
-        };
-    };
-
-    function contaPontos() {
-        var somaT = 0;
-        for (var q=1;q<=qtdQ;q++) {
-          var soma = 0;
-          var i = 1/(mov[contaT][q][0].length-1); //console.log("i",i);
-          for (var y=1;y<mov[contaT][q][0].length;y++) { //console.log(mov[contaT][q][y], "==", mov[contaT][q][0][y]);
-            if (mov[contaT][q][y] == mov[contaT][q][0][y]) { soma += i; };
-          };
-           mov[contaT][q][6] = soma; //console.log(contaT, q, mov[contaT][q][6]);
-           somaT+=soma;
-        };
-        mov[contaT][11] = (somaT/qtdQ)*10;
-        //console.log(contaT, mov[contaT][11]);
-    };
-
-    function salvaTentativa() {
-       contaPontos();
-       relato+=contaT + "#"; // tentativa
-       result+="Tentativa " + contaT + ": ";
-       relato+=mov[contaT][0] + "#"; // nível
-       var t=0;
-       //console.log(tempoT);
-       for (var q=1;q<=qtdQ;q++) { t+=tempoT[contaT][q]; };
-       tempoT[contaT][0] = t;
-       relato+=t + "#"; // tempo da tentativa
-       relato+=mov[contaT][11] + "#"; // nota da tentativa
-       result+=mov[contaT][11] + " (nível " + mov[contaT][0] + ")\n";
-       for (var q=1;q<=qtdQ;q++) {
-           relato+=mov[contaT][q][7] + ","; // só audio?
-           relato+=tempoT[contaT][q] + ","  // tempo da questão
-           relato+=mov[contaT][q][6] + ","; // nota questão
-         for (var x=1;x<=mov[contaT][q][0].length-1;x++) { //console.log(contaT, q, x, mov[contaT][q][x]);
-            var esc = mov[contaT][q][x] //.slice(0, mov[contaT][q][x].length-1)
-            relato+= esc + "&" + mov[contaT][q][0][x] + "!"; // escolha - resposta correta
-         };
-           relato+="%";
-      }; //console.log(relato);
-      relato+="@";
-    };
-
-    function salvaTudo() {
-        relato+=";";
-        var tTot=0, notaM = 0, tentaM = 0, temp=0;
-        for (var tt=1;tt<=contaT;tt++) {
-           tTot+=mov[tt][11];
-           if (mov[tt][11] > notaM) { notaM = mov[tt][11]; tentaM = tt; };
-           temp+=tempoT[tt][0];
-        }; //console.log("tTot", tTot, temp);
-        var tempMd = Math.round(temp/contaT);
-        var tMd = tTot/contaT;
-        relato+=tempMd + ";" // tempo médio das tentativas
-        relato+=tMd + ";"; // média das notos das tentativas
-        relato+=tentaM + "," + notaM + ";"; // 'tentativa com a nota mais alta' 'nota mais alta'
-        relato+=ipe + ";";
-        relato+="|" // separador final
-        // result+="Qtd de tentativas: "+contaT+"\n";
-        result+="Tempo médio: " + tempMd + "s\n";
-        result+="Nota mais alta: " + notaM + " (na tentativa " + tentaM + ")\n";
-        alert(result);
-        //console.log(relato);
-        modificaTexto();
-        salvarArquivo();
-    };
-
-    function salvarArquivo() { // console.log("salvarArquivo");
-
-      	var blob = new Blob([relato], {type: "text/plain;charset=utf-8"});
-        //var nome = prompt("nome do arquivo");
-      	saveAs(blob, "exMovVoz.txt");
-
-      };
+    var blob = new Blob([relato], {type: "text/plain;charset=utf-8"});
+    //var nome = prompt("nome do arquivo");
+    saveAs(blob, "exMovVoz.txt");
+    resetaVariaveis();
+};
 
 // --------------------
 
