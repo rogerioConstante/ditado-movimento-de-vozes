@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual do Usuário — Movimento das Vozes</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#1a1a1a; color:#e0e0e0; padding:30px 20px; }
+  .wrap { max-width:860px; margin:0 auto; }
+
+  h1 { font-size:2em; color:#e0e0e0; letter-spacing:2px; text-align:center; margin-bottom:4px; }
+  h1 span { color:#3a6ea5; }
+  .subtitle { text-align:center; color:#9a9a9a; font-style:italic; margin-bottom:32px; }
+
+  h2 { font-size:1.25em; color:#3a6ea5; border-left:4px solid #3a6ea5; padding-left:12px; margin:32px 0 14px; }
+  h3 { font-size:1.05em; color:#c0c0c0; margin:20px 0 8px; }
+
+  p  { color:#c8c8c8; line-height:1.7; margin-bottom:10px; }
+  ul, ol { padding-left:22px; margin-bottom:10px; }
+  li { color:#c8c8c8; line-height:1.75; }
+  li + li { margin-top:3px; }
+
+  /* Cards de movimento */
+  .movs { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:16px 0 24px; }
+  .mov-card { background:#252525; border-radius:10px; padding:16px 18px; border-left:4px solid; }
+  .mov-card.paralelo  { border-color:#4d8bc9; }
+  .mov-card.direto    { border-color:#c0872a; }
+  .mov-card.obliquo   { border-color:#4da87a; }
+  .mov-card.contrario { border-color:#a84d4d; }
+  .mov-card h3 { margin-top:0; font-size:1em; }
+  .mov-card.paralelo  h3 { color:#4d8bc9; }
+  .mov-card.direto    h3 { color:#c0872a; }
+  .mov-card.obliquo   h3 { color:#4da87a; }
+  .mov-card.contrario h3 { color:#c07070; }
+  .mov-card .exemplo { font-family:monospace; font-size:13px; color:#9a9a9a; margin-top:8px; line-height:1.6; }
+
+  /* Tabelas */
+  table { width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:14px; }
+  th { background:#1e3a5a; color:#9ac5f0; text-align:left; padding:8px 12px; }
+  td { padding:7px 12px; border-bottom:1px solid #333; color:#c8c8c8; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr:nth-child(even) td { background:#222; }
+
+  /* Notas */
+  .note { background:#1e2e1e; border-left:4px solid #4da87a; padding:10px 14px; border-radius:0 6px 6px 0; margin:12px 0; font-size:14px; color:#b0d0b0; }
+  .warn { background:#2e2010; border-left:4px solid #c0872a; padding:10px 14px; border-radius:0 6px 6px 0; margin:12px 0; font-size:14px; color:#d4b070; }
+
+  /* Atalhos */
+  kbd { background:#333; border:1px solid #555; border-radius:4px; padding:1px 7px; font-family:monospace; font-size:13px; color:#e0e0e0; }
+
+  /* Níveis */
+  .niveis { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:12px 0 20px; }
+  .nivel-card { background:#222; border-radius:7px; padding:10px 8px; text-align:center; border-top:3px solid; font-size:13px; }
+  .nivel-card.sem-timer { border-color:#4d8bc9; }
+  .nivel-card.com-timer { border-color:#a84d4d; }
+  .nivel-card .num { font-size:1.4em; font-weight:bold; color:#e0e0e0; }
+  .nivel-card .info { color:#9a9a9a; margin-top:4px; font-size:12px; line-height:1.5; }
+
+  /* Botões de exemplo */
+  .btn-demo { display:inline-block; background:#2d2d2d; border:1px solid #3a3a3a; border-radius:5px; padding:4px 14px; font-size:13px; color:#e0e0e0; margin:2px; }
+  .btn-demo.corr { background:#3a7d52; border-color:#4a9e68; color:#d0f0dc; }
+  .btn-demo.err  { background:#2d2d2d; border-color:#3a3a3a; color:#9a9a9a; }
+  .btn-demo.sel  { background:#4a90d9; border-color:#5ba3e8; color:#fff; }
+
+  hr { border:none; border-top:1px solid #333; margin:28px 0; }
+
+  @media (max-width:600px) {
+    .movs  { grid-template-columns:1fr; }
+    .niveis { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1><span>Movimento</span> das Vozes</h1>
+<p class="subtitle">Manual do Usuário · Prof. Rogério Tavares Constante · UFRJ / Polifonia</p>
+
+<hr>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>1. O que é este programa</h2>
+
+<p>O programa é um exercício de reconhecimento auditivo e visual dos quatro tipos de movimento entre duas vozes em um contraponto. A cada sessão são apresentadas 10 questões, cada uma com um trecho a duas vozes de 2 a 6 compassos. Para cada par de compassos consecutivos, o aluno identifica o tipo de movimento das vozes.</p>
+
+<p>As questões podem ser apresentadas de duas formas, sorteadas aleatoriamente:</p>
+<ul>
+  <li><strong>🎼 Partitura + áudio</strong> — a partitura é exibida e o áudio toca automaticamente.</li>
+  <li><strong>🎧 Somente áudio</strong> — a partitura é ocultada (aparece um <em>?</em>) e o aluno deve identificar os movimentos apenas pelo ouvido. A partitura é revelada ao clicar em <em>Resposta</em>.</li>
+</ul>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>2. Os quatro tipos de movimento</h2>
+
+<div class="movs">
+  <div class="mov-card paralelo">
+    <h3>Paralelo</h3>
+    <p>As duas vozes movem-se na mesma direção <em>e</em> mantêm o mesmo intervalo entre si.</p>
+    <div class="exemplo">Voz 1: Dó → Ré → Mi<br>Voz 2: Sol → Lá → Si<br>(intervalo de 5ª em todos os compassos)</div>
+  </div>
+  <div class="mov-card direto">
+    <h3>Direto (semelhante)</h3>
+    <p>As duas vozes movem-se na mesma direção, mas o intervalo entre elas muda.</p>
+    <div class="exemplo">Voz 1: Dó → Mi<br>Voz 2: Sol → Si<br>(ambas sobem, mas o intervalo varia)</div>
+  </div>
+  <div class="mov-card obliquo">
+    <h3>Oblíquo</h3>
+    <p>Uma voz se move enquanto a outra permanece na mesma nota.</p>
+    <div class="exemplo">Voz 1: Dó → Ré<br>Voz 2: Sol → Sol<br>(voz 2 estática)</div>
+  </div>
+  <div class="mov-card contrario">
+    <h3>Contrário</h3>
+    <p>As duas vozes movem-se em direções opostas (uma sobe, a outra desce).</p>
+    <div class="exemplo">Voz 1: Dó → Ré<br>Voz 2: Sol → Fá<br>(voz 1 sobe, voz 2 desce)</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>3. Primeiros passos</h2>
+
+<ol>
+  <li>Ao abrir o programa, uma janela pedirá seu <strong>nome</strong> — o campo é obrigatório.</li>
+  <li>Leia a tela inicial com as instruções gerais.</li>
+  <li>Configure o <strong>Nível</strong> (1–10) e o <strong>Timbre</strong> na barra superior.</li>
+  <li>Clique em <strong>Iniciar</strong> para começar a sessão.</li>
+</ol>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>4. Durante a sessão</h2>
+
+<h3>4.1 Fluxo de cada questão</h3>
+
+<ol>
+  <li>O áudio toca automaticamente ao abrir cada questão. Se for modo somente-áudio, a partitura mostra um <em>?</em>.</li>
+  <li>Após o áudio terminar, os botões de resposta ficam disponíveis e o timer começa (nos níveis com limite de tempo).</li>
+  <li>Para cada par de compassos — indicado como <strong>1→2</strong>, <strong>2→3</strong>, etc. — clique no botão correspondente ao movimento identificado.</li>
+  <li>Clique em <strong>Resposta</strong> para ver a solução correta (os botões corretos ficam destacados em verde).</li>
+  <li>Clique em <strong>Próximo</strong> para avançar (na última questão, o botão muda para <em>Finalizar</em>).</li>
+</ol>
+
+<h3>4.2 Grade de respostas</h3>
+
+<p>Abaixo da partitura aparecem colunas alinhadas às barras de compasso. Cada coluna representa a transição entre dois compassos consecutivos e contém quatro botões:</p>
+
+<div style="margin:12px 0 16px; display:flex; gap:8px; flex-wrap:wrap;">
+  <span class="btn-demo">Paralelo</span>
+  <span class="btn-demo">Direto</span>
+  <span class="btn-demo">Oblíquo</span>
+  <span class="btn-demo">Contrário</span>
+</div>
+
+<p>Ao clicar, o botão selecionado fica <span class="btn-demo sel">azul</span>. Apenas uma resposta por coluna é válida — clicar em outro botão da mesma coluna desfaz a seleção anterior. Após clicar em <em>Resposta</em>, os botões corretos ficam <span class="btn-demo corr">verdes</span>.</p>
+
+<div class="warn">Não é obrigatório responder todas as colunas antes de clicar em <em>Resposta</em>. Colunas sem resposta são registradas como "—" (sem resposta) no relatório.</div>
+
+<h3>4.3 Botões e atalhos</h3>
+
+<table>
+  <tr><th>Botão</th><th>Função</th><th>Atalho de teclado</th></tr>
+  <tr><td><strong>Tocar</strong></td><td>Reproduz novamente o áudio da questão atual.</td><td><kbd>T</kbd></td></tr>
+  <tr><td><strong>Resposta</strong></td><td>Revela a solução correta e, nas questões somente-áudio, exibe a partitura.</td><td><kbd>R</kbd></td></tr>
+  <tr><td><strong>Próximo / Finalizar</strong></td><td>Avança para a próxima questão ou encerra a sessão.</td><td><kbd>P</kbd></td></tr>
+  <tr><td><strong>Salvar</strong></td><td>Exporta o relatório da sessão atual em PDF.</td><td>—</td></tr>
+</table>
+
+<div class="note">O botão <em>Tocar</em> fica temporariamente desabilitado enquanto o áudio está em reprodução, e some quando o timer está nos últimos 5 segundos (níveis com limite de tempo).</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>5. Níveis de dificuldade</h2>
+
+<p>O nível controla dois fatores: o <strong>número de compassos</strong> de cada questão (que determina quantas transições há para analisar) e a presença de um <strong>timer</strong> com contagem regressiva. Níveis 1–5 não têm limite de tempo; níveis 6–10 têm.</p>
+
+<div class="niveis">
+  <div class="nivel-card sem-timer"><div class="num">1</div><div class="info">Sem timer<br>2–3 compassos</div></div>
+  <div class="nivel-card sem-timer"><div class="num">2</div><div class="info">Sem timer<br>2–4 compassos</div></div>
+  <div class="nivel-card sem-timer"><div class="num">3</div><div class="info">Sem timer<br>2–5 compassos</div></div>
+  <div class="nivel-card sem-timer"><div class="num">4</div><div class="info">Sem timer<br>3–6 compassos</div></div>
+  <div class="nivel-card sem-timer"><div class="num">5</div><div class="info">Sem timer<br>3–6 compassos</div></div>
+  <div class="nivel-card com-timer"><div class="num">6</div><div class="info">⏱ 40s<br>2–5 compassos</div></div>
+  <div class="nivel-card com-timer"><div class="num">7</div><div class="info">⏱ 30s<br>2–5 compassos</div></div>
+  <div class="nivel-card com-timer"><div class="num">8</div><div class="info">⏱ 25s<br>3–6 compassos</div></div>
+  <div class="nivel-card com-timer"><div class="num">9</div><div class="info">⏱ 20s<br>3–6 compassos</div></div>
+  <div class="nivel-card com-timer"><div class="num">10</div><div class="info">⏱ 15s<br>3–6 compassos</div></div>
+</div>
+
+<p>Nos níveis com timer, quando o tempo se esgota a questão avança automaticamente para a próxima sem registrar resposta para as colunas não preenchidas.</p>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>6. Pontuação</h2>
+
+<p>Cada questão vale <strong>0 a 10 pontos</strong>, calculados proporcionalmente ao número de transições corretas. Por exemplo, em uma questão com 4 transições, cada resposta correta vale 2,5 pontos.</p>
+
+<p>A <strong>nota da sessão</strong> é a média das 10 questões, numa escala de 0 a 10.</p>
+
+<p>O tempo gasto em cada questão é registrado e exibido no relatório, mas não afeta a pontuação — exceto indiretamente nos níveis com timer, pois o esgotamento do tempo impede que colunas faltantes sejam preenchidas.</p>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>7. Relatório e PDF</h2>
+
+<p>Ao finalizar as 10 questões, o programa exibe automaticamente o painel de resultados com:</p>
+
+<ul>
+  <li>Nome e data/hora da sessão</li>
+  <li>Nota final e nível utilizado</li>
+  <li>Histórico de tentativas anteriores (nota mais alta, tempo médio), caso o aluno tenha recomeçado na mesma sessão</li>
+  <li>Tabela detalhada com: número da questão, modo (🎼 partitura ou 🎧 áudio), tempo gasto, pontuação e detalhes de cada transição (✓ correto / ✗ incorreto, com o movimento esperado)</li>
+</ul>
+
+<p>Clique em <strong>Salvar PDF</strong> para exportar o relatório. O arquivo é salvo com o nome <em>resultado_[nome]_[data].pdf</em>.</p>
+
+<p>Clique em <strong>Recomeçar</strong> para iniciar uma nova sessão (o histórico de tentativas anteriores é mantido enquanto a página não for recarregada).</p>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>8. Timbres disponíveis</h2>
+
+<p>O menu <em>Timbre</em> na barra superior permite escolher o instrumento usado na reprodução. A mudança pode ser feita a qualquer momento entre questões.</p>
+
+<table>
+  <tr><th colspan="3">Timbres disponíveis</th></tr>
+  <tr><td>Acordeão</td><td>Bandoneon</td><td>Coral</td></tr>
+  <tr><td>Cordas</td><td>Flauta</td><td>Flauta doce</td></tr>
+  <tr><td>Harpa</td><td>Metais</td><td>Órgão drawbar</td></tr>
+  <tr><td>Órgão palheta</td><td>Piano <em>(padrão)</em></td><td>Trombone</td></tr>
+  <tr><td>Trompa</td><td>Vibrafone</td><td>Violão</td></tr>
+</table>
+
+<!-- ══════════════════════════════════════════════ -->
+<h2>9. Perguntas frequentes</h2>
+
+<h3>O áudio não toca.</h3>
+<p>O programa usa a Web Audio API, que requer uma interação do usuário antes de reproduzir sons. Clique em qualquer botão da interface e tente novamente. Verifique também se o volume do sistema não está em zero.</p>
+
+<h3>Qual é a diferença entre movimento Paralelo e Direto?</h3>
+<p>No movimento <strong>paralelo</strong>, as vozes se movem na mesma direção <em>e</em> o intervalo entre elas permanece idêntico (por exemplo, duas vozes subindo sempre em terças). No movimento <strong>direto</strong>, as vozes também se movem na mesma direção, mas o intervalo muda de um compasso para o outro.</p>
+
+<h3>Posso escutar o áudio mais de uma vez?</h3>
+<p>Sim. Clique em <strong>Tocar</strong> (ou pressione <kbd>T</kbd>) para repetir. O botão fica indisponível durante a reprodução e some nos últimos segundos do timer (níveis 6–10).</p>
+
+<h3>O que acontece se não responder todas as colunas?</h3>
+<p>As colunas sem resposta são registradas como "sem resposta" e contam como erro na pontuação daquela questão. Clique em <em>Resposta</em> e depois em <em>Próximo</em> mesmo sem preencher todas.</p>
+
+<hr>
+<p style="text-align:center; color:#555; font-size:13px;">
+  Movimento das Vozes · UFRJ / Projeto Polifonia<br>
+  Prof. Rogério Tavares Constante &mdash; rogerio@musica.ufrj.br
+</p>
+
+</div>
+</body>
+</html>
